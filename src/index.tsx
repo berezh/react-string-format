@@ -15,12 +15,40 @@ function format(text: string, ...params: FormatType[]): string | React.ReactNode
     } else {
         return (
             <React.Fragment>
-                {result.map((x, i) => (
-                    <React.Fragment key={i}>{x}</React.Fragment>
-                ))}
+                {result.map((x, i) => {
+                    const { startWhiteSpace, node, endWhiteSpace } = parseContent(x);
+                    return (
+                        <React.Fragment key={i}>
+                            {startWhiteSpace === true ? <React.Fragment>&nbsp;</React.Fragment> : undefined}
+                            {node}
+                            {endWhiteSpace === true ? <React.Fragment>&nbsp;</React.Fragment> : undefined}
+                        </React.Fragment>
+                    );
+                })}
             </React.Fragment>
         );
     }
+}
+
+function parseContent(
+    node: any,
+): {
+    startWhiteSpace?: boolean;
+    node: any;
+    endWhiteSpace?: boolean;
+} {
+    const startWhiteSpace = typeof node === 'string' ? !!node.match(/^\s+/gi) : undefined;
+    const endWhiteSpace = typeof node === 'string' ? !!node.match(/\s+$/gi) : undefined;
+
+    if(typeof node === 'string'){
+        node = node.replace(/^\s+/gi, "").replace(/\s+$/gi, "");
+    }
+
+    return {
+        startWhiteSpace,
+        node,
+        endWhiteSpace,
+    };
 }
 
 function parseAndReplace(source: FormatType[], replaceWith: FormatType, index: number): FormatType[] {
