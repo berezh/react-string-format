@@ -1,8 +1,12 @@
 import * as React from 'react';
 
-type FormatType = number | string | React.ReactNode;
+type FormatType = number | string | React.ReactElement;
 
-function format(text: string, ...params: FormatType[]): string | React.ReactNode {
+export const WhiteSpaceChar = '&nbsp;';
+
+function format(text: string, ...params: string[]): string;
+function format(text: string, ...params: FormatType[]): string | React.ReactElement;
+function format(text: string, ...params: FormatType[]): string | React.ReactElement {
     let result: FormatType[] = [text];
     params.forEach((param, i) => {
         result = parseAndReplace(result, param, i);
@@ -16,39 +20,34 @@ function format(text: string, ...params: FormatType[]): string | React.ReactNode
         return (
             <React.Fragment>
                 {result.map((x, i) => {
-                    const { startWhiteSpace, node, endWhiteSpace } = parseContent(x);
-                    return (
-                        <React.Fragment key={i}>
-                            {startWhiteSpace === true ? <React.Fragment>&nbsp;</React.Fragment> : undefined}
-                            {node}
-                            {endWhiteSpace === true ? <React.Fragment>&nbsp;</React.Fragment> : undefined}
-                        </React.Fragment>
-                    );
+                    return <React.Fragment key={i}>{x}</React.Fragment>;
                 })}
             </React.Fragment>
         );
     }
 }
 
-function parseContent(
-    node: any,
-): {
-    startWhiteSpace?: boolean;
-    node: any;
-    endWhiteSpace?: boolean;
-} {
-    const startWhiteSpace = typeof node === 'string' ? !!node.match(/^\s+/gi) : undefined;
-    const endWhiteSpace = typeof node === 'string' ? !!node.match(/\s+$/gi) : undefined;
-
-    if(typeof node === 'string'){
-        node = node.replace(/^\s+/gi, "").replace(/\s+$/gi, "");
+function replaceWhiteSpace(text: string): FormatType[] {
+    const result: FormatType[] = [];
+    let start = false;
+    let end = false;
+    if (!!text.match(/^\s+/gi)) {
+        text = text.replace(/^\s+/gi, '');
+        start = true;
+    }
+    if (!!text.match(/\s+$/gi)) {
+        text = text.replace(/\s+$/gi, '');
+        end = true;
+    }
+    if (start) {
+        result.push(<React.Fragment>&nbsp;</React.Fragment>);
+    }
+    result.push(text);
+    if (end) {
+        result.push(<React.Fragment>&nbsp;</React.Fragment>);
     }
 
-    return {
-        startWhiteSpace,
-        node,
-        endWhiteSpace,
-    };
+    return result;
 }
 
 function parseAndReplace(source: FormatType[], replaceWith: FormatType, index: number): FormatType[] {
@@ -60,21 +59,19 @@ function parseAndReplace(source: FormatType[], replaceWith: FormatType, index: n
             if (typeof replaceWith === 'string' || typeof replaceWith === 'number') {
                 result.push(possibleText.replace(pattern, `${replaceWith}`));
             } else {
-                if (typeof possibleText === 'string') {
-                    const splits = possibleText.split(pattern);
-                    splits.forEach((splitText, i) => {
-                        if (splitText) {
-                            result.push(splitText);
-                        }
-                        // if last
-                        if (i + 1 < splits.length) {
-                            result.push(replaceWith);
-                        }
-                    });
-                } else {
-                    result.push(possibleText);
-                }
+                const splits = possibleText.split(pattern);
+                splits.forEach((splitText, i) => {
+                    if (splitText) {
+                        replaceWhiteSpace(splitText).forEach(text => result.push(text));
+                    }
+                    // if NOT last
+                    if (i + 1 < splits.length) {
+                        result.push(replaceWith);
+                    }
+                });
             }
+        } else {
+            result.push(possibleText);
         }
     });
 
