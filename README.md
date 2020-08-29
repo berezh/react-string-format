@@ -23,24 +23,24 @@ import { format } from 'react-string-format';
 ### Format number or test
 
 ```jsx
-format('number: {0}, text: {1}', 1, 'bla');
+format('number: {0}, text: {1}', 1, 'hello!');
 // result:
-('number: 1, text: bla');
+('number: 1, text: hello!');
 ```
 
 ### Format react component
 
 ```jsx
-format('hiperlink: {0}, span tag: {1}', <a href="#">Link</a>, <span>Bla</span>);
+format('hiperlink: {0}, span tag: {1}', <a href="#">Click Me</a>, <span>Bla-bla</span>);
 // result:
 <React.Fragment>
     <React.Fragment key={0}>hiperlink: </React.Fragment>
     <React.Fragment key={1}>
-        <a href="#">Link</a>
+        <a href="#">Click Me</a>
     </React.Fragment>
     <React.Fragment key={2}>, span tag: </React.Fragment>
     <React.Fragment key={3}>
-        <span>Bla</span>
+        <span>Bla-bla</span>
     </React.Fragment>
 </React.Fragment>;
 ```

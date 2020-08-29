@@ -1,6 +1,6 @@
 {
     "name": "react-string-format",
-    "version": "0.0.6",
+    "version": "0.0.8",
     "description": "",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
@@ -21,10 +21,12 @@
         "url": "git+https://github.com/berezh/react-string-format.git"
     },
     "keywords": [
-        "ract",
-        "foramt",
+        "react",
+        "format",
         "string",
-        "string format"
+        "string format",
+        "tag format",
+        "typescript"
     ],
     "author": "Vadym Poberezhnyi",
     "license": "MIT",
