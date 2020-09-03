@@ -20,7 +20,7 @@ npm install react-string-format
 import { format } from 'react-string-format';
 ```
 
-### Format number or test
+### Format string or number
 
 ```jsx
 format('number: {0}, text: {1}', 1, 'hello!');
