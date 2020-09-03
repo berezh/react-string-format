@@ -23,9 +23,9 @@ import { format } from 'react-string-format';
 ### Format string or number
 
 ```jsx
-format('number: {0}, text: {1}', 1, 'hello!');
+format('text: {1}, number: {0}', 'hello!', 123);
 // result:
-('number: 1, text: hello!');
+'text: hello!, number: 123'
 ```
 
 ### Format react component
@@ -42,5 +42,5 @@ format('hiperlink: {0}, span tag: {1}', <a href="#">Click Me</a>, <span>Bla-bla<
     <React.Fragment key={3}>
         <span>Bla-bla</span>
     </React.Fragment>
-</React.Fragment>;
+</React.Fragment>
 ```
