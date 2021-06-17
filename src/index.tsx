@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-type FormatType = number | string | React.ReactElement;
+type FormatType = React.ReactText | React.ReactElement;
 
 export const WhiteSpaceChar = '&nbsp;';
 
-function format(text: string, ...params: string[]): string;
+function format(text: string, ...params: React.ReactText[]): string;
 function format(text: string, ...params: FormatType[]): string | React.ReactElement;
 function format(text: string, ...params: FormatType[]): string | React.ReactElement {
     let result: FormatType[] = [text];
@@ -53,7 +53,7 @@ function replaceWhiteSpace(text: string): FormatType[] {
 function parseAndReplace(source: FormatType[], replaceWith: FormatType, index: number): FormatType[] {
     const result: FormatType[] = [];
 
-    source.forEach(possibleText => {
+    source.forEach((possibleText) => {
         if (typeof possibleText === 'string') {
             const pattern = new RegExp(`\\{${index}\\}`, 'gi');
             if (typeof replaceWith === 'string' || typeof replaceWith === 'number') {
@@ -62,7 +62,7 @@ function parseAndReplace(source: FormatType[], replaceWith: FormatType, index: n
                 const splits = possibleText.split(pattern);
                 splits.forEach((splitText, i) => {
                     if (splitText) {
-                        replaceWhiteSpace(splitText).forEach(text => result.push(text));
+                        replaceWhiteSpace(splitText).forEach((text) => result.push(text));
                     }
                     // if NOT last
                     if (i + 1 < splits.length) {

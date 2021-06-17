@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as ReactTestRenderer from 'react-test-renderer';
+
 import { format } from '../index';
 
 test('node', () => {
@@ -14,7 +15,7 @@ test('node.2', () => {
             <i>0</i>
             <React.Fragment>&nbsp;</React.Fragment>
             <i>1</i>
-        </React.Fragment>,
+        </React.Fragment>
     );
 });
 
@@ -28,7 +29,7 @@ test('node.3', () => {
             <i>1</i>
             <React.Fragment>&nbsp;</React.Fragment>
             <i>2</i>
-        </React.Fragment>,
+        </React.Fragment>
     );
 });
 

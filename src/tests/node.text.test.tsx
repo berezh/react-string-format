@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactTestRenderer from 'react-test-renderer';
-import { format } from '../index';
 
+import { format } from '../index';
 
 test('node.text.2', () => {
     expectNode(
@@ -17,7 +17,7 @@ test('node.text.2', () => {
             <i>1</i>
             <React.Fragment>&nbsp;</React.Fragment>
             <React.Fragment>!</React.Fragment>
-        </React.Fragment>,
+        </React.Fragment>
     );
 });
 
