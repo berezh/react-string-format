@@ -1,4 +1,4 @@
-import { format } from '..';
+import { format } from '../src';
 
 test('localization format number', () => {
     expect(format('')).toBe('');
