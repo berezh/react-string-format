@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactTestRenderer from 'react-test-renderer';
 
-import { format } from '../index';
+import { format } from '../src';
 
 test('node', () => {
     expectNode('{0}', [<i>0</i>], <i>0</i>);

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactTestRenderer from 'react-test-renderer';
 
-import { format } from '../index';
+import { format } from '../src/index';
 
 test('node.text.2', () => {
     expectNode(
