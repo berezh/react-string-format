@@ -1,6 +1,6 @@
 # react-string-format
 
-TypeScript maybe monad for reaching child fields inside complicated objects.
+Formats string using string, number, and react components as paramaters
 
 <a href="https://www.npmjs.com/package/react-string-format">
     <img src="https://nodei.co/npm/react-string-format.png?mini=true">
@@ -20,15 +20,22 @@ npm install react-string-format
 import { format } from 'react-string-format';
 ```
 
-### Format string or number
+## String
 
 ```jsx
-format('text: {1}, number: {0}', 'hello!', 123);
+format('first: {0}; second: {1}', 'hello', 'word');
 // result:
-'text: hello!, number: 123'
+'first: hello; second: word'
+```
+## Number
+
+```jsx
+format('first: {0}; second: {1}', 1, 2);
+// result:
+'first: 1; second: 2'
 ```
 
-### Format react component
+### React component
 
 ```jsx
 format('hiperlink: {0}, span tag: {1}', <a href="#">Click Me</a>, <span>Bla-bla</span>);

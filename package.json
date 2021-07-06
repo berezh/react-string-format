@@ -1,7 +1,7 @@
 {
     "name": "react-string-format",
-    "version": "0.1.4",
-    "description": "",
+    "version": "1.0.0",
+    "description": "Formats string using string, number, and react components as paramaters",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
     "scripts": {
@@ -15,12 +15,14 @@
         "url": "git+https://github.com/berezh/react-string-format.git"
     },
     "keywords": [
-        "react",
         "format",
-        "string",
         "string format",
+        "format string",
+        "format number",
         "format component",
-        "typescript"
+        "typescript",
+        "react",
+        "javascript"
     ],
     "author": "Vadym Poberezhnyi",
     "license": "MIT",
