@@ -1,6 +1,6 @@
 {
     "name": "react-string-format",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Formats string using string, number, and react components as paramaters",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
