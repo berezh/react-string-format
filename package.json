@@ -1,6 +1,6 @@
 {
     "name": "react-string-format",
-    "version": "1.2.0",
+    "version": "1.4.0",
     "description": "Formats string using string, number, and react components as paramaters",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
@@ -8,7 +8,9 @@
         "test": "jest --config jest.config.js",
         "build": "tsc -p tsconfig.build.json",
         "lint": "eslint .",
-        "lint:fix": "eslint . --fix"
+        "lint:fix": "eslint . --fix",
+        "v": "npm --no-git-tag-version version minor",
+        "p": "npm run v && npm run lint:fix && git add * && git commit -m\"v\" && git push origin master"
     },
     "repository": {
         "type": "git",
@@ -24,6 +26,9 @@
         "react",
         "javascript"
     ],
+    "peerDependencies": {
+        "react": ">=16"
+    },
     "author": "Vadym Poberezhnyi",
     "license": "MIT",
     "bugs": {
