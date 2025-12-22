@@ -1,10 +1,12 @@
+/* eslint-disable react/no-array-index-key */
+
 import * as React from "react";
 
-type FormatType = React.ReactText | React.ReactElement;
+type FormatType = string | number | React.ReactElement;
 
 export const WhiteSpaceChar = "&nbsp;";
 
-function format(text: string, ...params: React.ReactText[]): string;
+function format(text: string, ...params: (string | number)[]): string;
 function format(text: string, ...params: FormatType[]): string | React.ReactElement;
 function format(text: string, ...params: FormatType[]): string | React.ReactElement {
   let result: FormatType[] = [text];
@@ -31,11 +33,11 @@ function replaceWhiteSpace(text: string): FormatType[] {
   const result: FormatType[] = [];
   let start = false;
   let end = false;
-  if (!!text.match(/^\s+/gi)) {
+  if (text.match(/^\s+/gi)) {
     text = text.replace(/^\s+/gi, "");
     start = true;
   }
-  if (!!text.match(/\s+$/gi)) {
+  if (text.match(/\s+$/gi)) {
     text = text.replace(/\s+$/gi, "");
     end = true;
   }

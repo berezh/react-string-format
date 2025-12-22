@@ -1,9 +1,15 @@
 {
     "name": "react-string-format",
-    "version": "1.4.0",
+    "version": "1.5.0",
     "description": "Formats string using string, number, and react components as paramaters",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
+    "author": "Vadym Poberezhnyi",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/berezh/react-string-format/issues"
+    },
+    "homepage": "https://github.com/berezh/react-string-format#readme",
     "scripts": {
         "test": "jest --config jest.config.js",
         "build": "tsc -p tsconfig.build.json",
@@ -29,17 +35,12 @@
     "peerDependencies": {
         "react": ">=16"
     },
-    "author": "Vadym Poberezhnyi",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/berezh/react-string-format/issues"
-    },
-    "homepage": "https://github.com/berezh/react-string-format#readme",
+    "prettier": "eslint-config-varp/prettier",
     "devDependencies": {
         "@types/jest": "^24.0.19",
         "@types/react": "^19.2.7",
         "@types/react-test-renderer": "^19.1.0",
-        "eslint-config-varp": "^1.9.2",
+        "eslint-config-varp": "^2.14.0",
         "jest": "^24.9.0",
         "react": "^19.2.3",
         "react-test-renderer": "^19.2.3",

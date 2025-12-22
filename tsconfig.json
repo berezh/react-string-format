@@ -5,8 +5,13 @@
         "declaration": true,
         "outDir": "./lib",
         "strict": true,
-        "lib": ["es2015", "es2016"],
-        "jsx": "react"
+        "lib": ["es2015", "es2016", "dom"],
+        "jsx": "react",
+        "esModuleInterop": true,
+        "noImplicitAny": false,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "strictPropertyInitialization": false
     },
     "include": ["src", "tests"],
     "exclude": ["node_modules"]
