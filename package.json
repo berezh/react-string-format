@@ -41,10 +41,10 @@
         "@types/react": "^19.2.7",
         "@types/react-test-renderer": "^19.1.0",
         "eslint-config-varp": "^2.14.0",
-        "jest": "^24.9.0",
+        "jest": "^30.2.0",
         "react": "^19.2.3",
         "react-test-renderer": "^19.2.3",
-        "ts-jest": "^24.1.0",
+        "ts-jest": "^29.4.6",
         "typescript": "^5.9.3"
     },
     "files": [
